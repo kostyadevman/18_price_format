@@ -2,7 +2,6 @@ from format_price import format_price
 import unittest
 
 
-
 class FormatPriceTest(unittest.TestCase):
     def test_valid_str(self):
         self.assertEqual(format_price('3245.000000'), '3 245')
