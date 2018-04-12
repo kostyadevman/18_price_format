@@ -1,5 +1,22 @@
+import argparse
+import re
+
+def get_argument():
+    parser = argparse.ArgumentParser('Price format')
+    parser.add_argument("--price", type=str, required=True)
+    return parser.parse_args()
+
+
 def format_price(price):
-    pass
+    if not isinstance(price,(int, float, str)):
+        raise TypeError('Only int, float or str')
+    if not re.match('^\d+\.?\d+$', str(price).strip(' ')):
+        raise ValueError('Wrong input')
+
+    price = float(price)
+    return '{:,.2f}'.format(price).replace(',',' ').replace('.00', '')
+
 
 if __name__ == '__main__':
-    pass
+    args = get_argument()
+    print(format_price(args.price))
