@@ -11,6 +11,14 @@ Example:
 $ python format_price.py --price 3456.00000
 3 456
 ````
+In order to use **price formatter** in your code:
+
+````python
+from format_price import format_price
+
+price_to_format = 3456.0000
+pretty_price = format_price(price_to_format)
+````
 
 # Project Goals
 

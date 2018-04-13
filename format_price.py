@@ -4,15 +4,15 @@ import re
 
 def get_argument():
     parser = argparse.ArgumentParser('Price format')
-    parser.add_argument("--price", type=str, required=True)
+    parser.add_argument('--price', type=str, required=True)
     return parser.parse_args()
 
 
 def format_price(price):
     if not isinstance(price, (int, float, str)):
-        raise TypeError('Only int, float or str')
+        raise TypeError
     if not re.match('^\d+\.?\d+$', str(price).strip(' ')):
-        raise ValueError('Wrong input')
+        raise ValueError
 
     price = float(price)
     return '{:,.2f}'.format(price).replace(',', ' ').replace('.00', '')
