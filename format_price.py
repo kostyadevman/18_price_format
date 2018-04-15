@@ -10,9 +10,9 @@ def get_argument():
 
 def format_price(price):
     if not isinstance(price, (int, float, str)):
-        raise TypeError
+        return None
     if not re.match('^\d+\.?\d+$', str(price).strip(' ')):
-        raise ValueError
+        return None
 
     price = float(price)
     return '{:,.2f}'.format(price).replace(',', ' ').replace('.00', '')
@@ -20,4 +20,8 @@ def format_price(price):
 
 if __name__ == '__main__':
     args = get_argument()
-    print(format_price(args.price))
+    pretty_price = format_price(args.price)
+    if pretty_price:
+        print(pretty_price)
+    else:
+        print('The error has occured')

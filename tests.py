@@ -12,21 +12,23 @@ class FormatPriceTest(unittest.TestCase):
     def test_valid_float(self):
         self.assertEqual(format_price(2750.476), '2 750.48')
 
-    def test_invalid_str(self):
-        with self.assertRaises(ValueError):
-            format_price('1234a.17')
+    def test_invalid_string(self):
+        self.assertEqual(format_price('1234a.17'), None)
 
     def test_invalid_str_2(self):
-        with self.assertRaises(ValueError):
-            format_price('1234,01')
+        self.assertEqual(format_price('1234,01'), None)
 
     def test_invalid_float(self):
-        with self.assertRaises(ValueError):
-            format_price(-999.04)
+        self.assertEqual(format_price(-999.04), None)
 
-    def test_invalist_type(self):
-        with self.assertRaises(TypeError):
-            format_price((1234.00,))
+    def test_invalid_tuple(self):
+        self.assertEqual(format_price((1234.00,)), None)
+
+    def test_invalid_dict(self):
+        self.assertEqual(format_price({1234}), None)
+
+    def test_invalid_list(self):
+        self.assertEqual(format_price([567.80]), None)
 
 
 if __name__ == '__main__':
