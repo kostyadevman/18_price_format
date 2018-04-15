@@ -19,7 +19,7 @@ class FormatPriceTest(unittest.TestCase):
         self.assertEqual(format_price('1234,01'), None)
 
     def test_invalid_float(self):
-        self.assertEqual(format_price(-999.04), None)
+        self.assertEqual(format_price(-999.04), '-999.04')
 
     def test_invalid_tuple(self):
         self.assertEqual(format_price((1234.00,)), None)

@@ -11,7 +11,7 @@ def get_argument():
 def format_price(price):
     if not isinstance(price, (int, float, str)):
         return None
-    if not re.match('^\d+\.?\d+$', str(price).strip(' ')):
+    if not re.match('^\-?\d+\.?\d+$', str(price).strip(' ')):
         return None
 
     price = float(price)
